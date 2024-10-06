@@ -60,7 +60,7 @@ fn sumStationsParallel(results: *std.StringHashMapUnmanaged(StationData), buf: [
         }
         partResults[i] = std.StringHashMapUnmanaged(StationData).empty;
         try partResults[i].ensureTotalCapacity(arenaAllocator, mapSize);
-        threads[i] = try std.Thread.spawn(.{ .stack_size = 1024 }, sumStations, .{ &partResults[i], buf[start..end] });
+        threads[i] = try std.Thread.spawn(.{ .stack_size = 8192 }, sumStations, .{ &partResults[i], buf[start..end] });
         start = end;
     }
     for (0..numPartitions) |i| {

@@ -65,7 +65,7 @@ fn sumStations(results: *data.Results, buf: []u8) void {
 
 fn processLine(results: *data.Results, line: []u8) void {
     const sep = if (line[line.len - 6] == ';') line.len - 6 else if (line[line.len - 5] == ';') line.len - 5 else line.len - 4;
-    const valHi = std.fmt.parseInt(i16, line[sep + 1 .. line.len - 2], 10) catch unreachable;
+    const valHi = std.fmt.parseInt(i11, line[sep + 1 .. line.len - 2], 10) catch unreachable;
     const val = 10 * valHi + line[line.len - 1] - '0';
     var gopResult = results.data.getOrPutAssumeCapacity(line[0..sep]);
     if (gopResult.found_existing) {

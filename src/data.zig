@@ -17,10 +17,10 @@ pub const Results = struct {
 };
 
 pub const StationData = struct {
-    sum: i64,
-    min: i16,
-    max: i16,
-    count: u32,
+    sum: i39,
+    min: i11,
+    max: i11,
+    count: u30,
     pub fn format(self: StationData, comptime fmt: []const u8, options: std.fmt.FormatOptions, writer: anytype) !void {
         _ = fmt;
         _ = options;
@@ -32,7 +32,7 @@ pub const StationData = struct {
 };
 
 const Decimal2 = struct {
-    v: i16,
+    v: i11,
     pub fn format(self: Decimal2, comptime fmt: []const u8, options: std.fmt.FormatOptions, writer: anytype) !void {
         _ = fmt;
         _ = options;
